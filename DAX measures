@@ -1,0 +1,28 @@
+Total Sales = SUM(Superstore[Sales])
+
+Total Profit = SUM(Superstore[Profit])
+
+Total Quantity = SUM(Superstore[Quantity])
+
+Total Orders = DISTINCTCOUNT(Superstore[Order ID])
+
+Avg Order Value = 
+DIVIDE([Total Sales], [Total Orders], 0)
+
+Profit Margin % = 
+DIVIDE([Total Profit], [Total Sales], 0)
+
+Sales YTD = 
+TOTALYTD([Total Sales], DateTable[Date])
+
+Sales Previous Year = 
+CALCULATE([Total Sales], SAMEPERIODLASTYEAR(DateTable[Date]))
+
+YoY Growth % = 
+DIVIDE([Total Sales] - [Sales Previous Year], [Sales Previous Year], 0)
+
+Sales Previous Month = 
+CALCULATE([Total Sales], PARALLELPERIOD(DateTable[Date], -1, MONTH))
+
+MoM Growth % = 
+DIVIDE([Total Sales] - [Sales Previous Month], [Sales Previous Month], 0)
